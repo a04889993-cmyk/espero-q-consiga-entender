@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Minha irma</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#111,#2b2b2b);
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+overflow-x:hidden;
+}
+
+.container{
+max-width:900px;
+text-align:center;
+z-index:2;
+}
+
+.topo{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+h1{
+font-size:3rem;
+}
+
+p{
+font-size:1.2rem;
+line-height:1.8;
+white-space:pre-line;
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.floating{
+position:absolute;
+width:20px;
+height:20px;
+background:white;
+opacity:0.1;
+border-radius:50%;
+animation:subir 10s linear infinite;
+}
+
+@keyframes subir{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-120px);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="topo">
+<h1>✨ Oii Maninha ✨</h1>
+
+<button onclick="tocarMusica()">
+▶ Tocar Música
+</button>
+</div>
+
+<p>
+Fiz esse pequeno site só pra dizer q, eu to com vc e do seu lado sempre .
+
+quero que q vc saiba q eu, faria qualquer coisa por vc, Eu estou com um peso mental q siceramente só conseguie te dizer por um site q eu criei pq perdi totalmente a coragem, inclusive a coragem de te olhar nos olhos, eu me sinto culpado, culpado por nn ter te dado mais atenção antes, por mais q vc ja tenha ao seu redor, eum me culpo pq agr q eu to sozinho, eu pensei em vc, eu fui egoísta e sou egoísta, vc sempre esteve do meu do lado e eu mal prestei atenção, eu estou com medo, medo de nn conseguir me levantar da cama por mais um dia, eu queria poder culpar as coisas q fizeram comigo ou culpar até mesmo a nicoly por ter feito oq ela fez, mas a culpa é só minha, tanto pelos erros q cometi ou pelas escolhas q eu fiz, foram escolhas minhas e eu tenho medo de encaram elas, eu abandonei a nicoly 4 vezes, nn posso culpar ela por ela ter me abandonado, mas enfim, nn é sobre ela q eu quero falar e nem preciso pq oq aconteceu já aconteceu, eu sempre me apeguei facíl as pessoas, sempre precurei ter atenção de mulheres pq eu nn conseguia ficar sozinho, eu me mentive inseguro por tanto tempo q até me perdi noq significa propósito, eu me lembro de qaundo a gente conversava sobre sermos fieis e parecermos p Kaka kk, eu realmente tentei ser uma boa pessoa, mas eu me perdi faz tempo, eu estou quebrado, cansado, muito cansado.
+
+mas independente do quão ruim eu esteja da cabeça, eu quero q vc tenha certeza deq vc sempre vai ter um irmão com vc, nem q eu esteja perto ou longe, vivo ou morto, eu estou com vc, eu te apoio e ajudo sempre q vc precisar, quando estiver confusa ou se sentindo mal, pode vir até mim q eu vou ter estender a mão, eu te amo dms maninha, nunca esqueça isso
+</p>
+
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function tocarMusica(){
+document.getElementById("musica").play();
+}
+
+for(let i=0;i<25;i++){
+let bolinha=document.createElement("div");
+bolinha.classList.add("floating");
+
+bolinha.style.left=Math.random()*100+"vw";
+bolinha.style.animationDuration=
+(Math.random()*5+5)+"s";
+
+bolinha.style.width=
+bolinha.style.height=
+(Math.random()*15+5)+"px";
+
+document.body.appendChild(bolinha);
+}
+</script>
+
+</body>
+</html>
