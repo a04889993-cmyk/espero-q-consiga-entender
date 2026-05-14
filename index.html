@@ -22,6 +22,7 @@ justify-content:center;
 align-items:center;
 padding:40px 20px;
 overflow-x:hidden;
+position:relative;
 }
 
 .container{
@@ -55,6 +56,11 @@ border:none;
 border-radius:15px;
 cursor:pointer;
 font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 .floating{
@@ -85,7 +91,7 @@ transform:translateY(-120px);
 <div class="topo">
 <h1>✨ Oii Maninha ✨</h1>
 
-<button onclick="tocarMusica()">
+<button id="botaoMusica">
 ▶ Tocar Música
 </button>
 </div>
@@ -101,19 +107,30 @@ mas independente do quão ruim eu esteja da cabeça, eu quero q vc tenha certeza
 </div>
 
 <audio id="musica" loop>
-<source src="musica.mp3" type="audio/mp3">
+<source src="ssstik.io_1778732936197.mp3" type="audio/mp3">
 </audio>
 
 <script>
-function tocarMusica(){
-document.getElementById("musica").play();
-}
+
+const musica = document.getElementById("musica");
+const botao = document.getElementById("botaoMusica");
+
+botao.addEventListener("click", () => {
+
+musica.play();
+
+botao.innerHTML = "♫ Tocando Música";
+
+});
 
 for(let i=0;i<25;i++){
+
 let bolinha=document.createElement("div");
+
 bolinha.classList.add("floating");
 
 bolinha.style.left=Math.random()*100+"vw";
+
 bolinha.style.animationDuration=
 (Math.random()*5+5)+"s";
 
@@ -122,7 +139,9 @@ bolinha.style.height=
 (Math.random()*15+5)+"px";
 
 document.body.appendChild(bolinha);
+
 }
+
 </script>
 
 </body>
