@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -49,26 +50,9 @@ p{
   margin-top:20px;
 }
 
+/* Controles ficam escondidos */
 .botoes{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-button{
-  border:0;
-  border-radius:12px;
-  padding:12px 18px;
-  background:#8175ff;
-  color:white;
-  font-weight:bold;
-  font-size:15px;
-}
-
-button:active{
-  transform:scale(.96);
+  display:none;
 }
 
 .info{
@@ -76,6 +60,34 @@ button:active{
   margin-top:20px;
   color:#9fa6c5;
   font-size:14px;
+}
+
+/* Esconde os controles nativos do vídeo */
+.video::-webkit-media-controls{
+  display:none !important;
+}
+
+.video::-webkit-media-controls-enclosure{
+  display:none !important;
+}
+
+@media (max-width:700px){
+  body{
+    padding:10px;
+  }
+
+  .container{
+    padding:15px;
+    border-radius:18px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  .info{
+    font-size:12px;
+  }
 }
 </style>
 </head>
@@ -88,25 +100,20 @@ button:active{
 
 <p>Trabalho de Matemática</p>
 
-<video id="video" class="video" controls>
+<video id="video" class="video" playsinline>
   <source src="trabalho.mp4" type="video/mp4">
   Seu navegador não conseguiu carregar o vídeo.
 </video>
 
 <div class="botoes">
-
-<button onclick="pausar()">⏸ Pausar / Continuar</button>
-
-<button onclick="voltar()">↶ Voltar 5s</button>
-
-<button onclick="avancar()">Avançar 5s ↷</button>
-
-<button onclick="reiniciar()">↺ Reiniciar</button>
-
+  <button onclick="pausar()">⏸ Pausar / Continuar</button>
+  <button onclick="voltar()">↶ Voltar 5s</button>
+  <button onclick="avancar()">Avançar 5s ↷</button>
+  <button onclick="reiniciar()">↺ Reiniciar</button>
 </div>
 
 <div class="info">
-💡 Durante a apresentação, você pode pausar o vídeo para explicar cada parte.
+💡 Pressione ESPAÇO para pausar ou continuar.
 </div>
 
 </div>
@@ -128,13 +135,25 @@ function voltar(){
 }
 
 function avancar(){
-  video.currentTime = Math.min(video.duration, video.currentTime + 5);
+  if(video.duration){
+    video.currentTime = Math.min(video.duration, video.currentTime + 5);
+  }
 }
 
 function reiniciar(){
   video.currentTime = 0;
   video.pause();
 }
+
+/* Espaço pausa ou continua */
+document.addEventListener("keydown", function(event){
+
+  if(event.code === "Space"){
+    event.preventDefault();
+    pausar();
+  }
+
+});
 
 </script>
 
